@@ -1,0 +1,21 @@
+`timescale 1ns / 1ps
+
+module normal_tb();
+reg [3:0] a;
+reg [3:0] b;
+reg m;
+wire [3:0] sum;
+wire cot,v;
+normal dut (.a(a),.b(b),.sum(sum),.m(m),.v(v),.cot(cot));
+initial 
+begin
+  a=4'b0010; b=4'b1110; m=1'b0;
+#10;   a=4'b1010; b=4'b1110; m=1'b0;
+#10;  a=4'b1110; b=4'b1000; m=1'b0;
+#10;   a=4'b1110; b=4'b1010; m=1'b1;
+#10;   a=4'b0110; b=4'b0010; m=1'b1;
+#10;   a=4'b0100; b=4'b0010; m=1'b0;
+#10;
+$finish;
+end
+endmodule
